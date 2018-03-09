@@ -1,0 +1,11 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'AldoHub' do
+	pod 'p2.OAuth2', '~> 4.0'
+    pod 'Alamofire', '~> 4.6'
+end
+
+target 'AldoHubTests' do
+	# inherit! :search_paths
+end

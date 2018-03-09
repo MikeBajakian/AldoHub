@@ -1,0 +1,46 @@
+
+
+
+Hello Kapies and Aldo iOS-team members,
+
+Please find below a few notes concerning the AldoHub Test App:
+
+
+
+- I chose to use OAuth2 method from the authentication mechanisms provided by Github. For that I used 3rd party pods p2.Oauth2 and Alamofire
+
+- The app uses the embedded-login approach so the login button takes you through Github authentication with possible redirections
+
+- Initially you have to authorize p2 to be able to access your account
+
+- I don't have any private Github repos so there's a possibility they might impose a special case for which the app doesn't work as expected
+
+- the Logout code seems not to fully kill the session or tokens, etc... so your next Login doesn't go through the username/pwd screen. So if you need to test with another user on the same device the app has to be deleted and reinstalled
+
+
+
+Improvements (I wish I had more time to implement)
+
+- Add a fullScreen loading subview whenever data is being fetched (with spinner and message like "fetching repos...", fetching branches...") and remove it when fetch response is obtained
+
+- Let Repos, Branches and PullRequests TVControllers inherit from a base TVController which has a navigation right-button to "Refresh". The base TVController could have a protocol with a required method to reload content
+
+- For all TVCells, the comment Label has numberOfLines = 0 which makes it expand if more text is inserted into it but table rowHeight and TVCell constraints have to be investigated. For now I used a fixed height so a long comment is end-truncated
+
+- For all TVControllers if the fetched data returns a count of zero (No Repos or No branches etc...) add an overlay message subview to the TV for that
+
+- OAuth2ConnectionManager.swift can be further improved to behave more like a shared connection manager
+
+- define a uniform debug logging scheme (ex: numbered error messages with a pre-agreed format) and use it in all error returns, do try catch, guard else, etc...
+
+
+
+
+That's all from my side.
+
+I hope you enjoy testing AldoHub as much as I enjoyed developing it.
+
+Thank you!
+
+Best regards,
+Mike Bajakian
